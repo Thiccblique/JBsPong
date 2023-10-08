@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Other Objects")]
     public Ball ball;
+    public Ball blBall;
     public Paddle playerPaddle;
     public Paddle computerPaddle;
     [Header("Score")]
@@ -24,14 +25,24 @@ public class GameManager : MonoBehaviour
 
     [Header("Togolable")]
     public GameObject ppVolume;
+    public GameObject upUI;
+    public GameObject downUI;
+    public GameObject smallPP;
+    public GameObject mirroredSPP;
+    public GameObject playerP;
+    public GameObject computerP;
+    public GameObject NeonPP;
+    public GameObject NeonCP;
+    public GameObject balls;
+    public GameObject bBall;
     
 
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -67,6 +78,8 @@ public class GameManager : MonoBehaviour
         computerPaddle.ResetPosition();
         ball.ResetPosition();
         ball.StartingForce();
+        blBall.ResetPosition();
+        blBall.StartingForce();
     }
 
     public void TimedVisualEvents()
@@ -74,8 +87,26 @@ public class GameManager : MonoBehaviour
         if (playerScore == 1)
         {
             ppVolume.SetActive(true);
-            ;
+            upUI.SetActive(false);
+            downUI.SetActive(false); 
+            balls.SetActive(false);
+            bBall.SetActive(true);
+            
 
+        }
+        if (playerScore == 2)
+        {
+            smallPP.SetActive(true);
+            mirroredSPP.SetActive(true);
+            playerP.SetActive(false);
+        }
+        if (playerScore == 4)
+        {
+            smallPP.SetActive(false);
+            mirroredSPP.SetActive(false);
+            computerP.SetActive(false);
+            NeonCP.SetActive(true);
+            NeonPP.SetActive(true);
         }
     }
 

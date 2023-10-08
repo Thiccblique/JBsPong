@@ -6,8 +6,6 @@ public class Ball : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float speed = 200.0f;
-    public Color flashColor = Color.green;
-    private Renderer renderer;
 
     // Start is called before the first frame update
     void Start()
@@ -38,14 +36,6 @@ public class Ball : MonoBehaviour
     {
         rb.AddForce(force);
     }
-   
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Ball ball = collision.gameObject.GetComponent<Ball>();
-        if (ball != null)
-        {
-            renderer.material.color = flashColor;
-        }
-    }
+
 
 }
