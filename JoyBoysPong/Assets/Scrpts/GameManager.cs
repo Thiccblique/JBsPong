@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void TimedVisualEvents()
     {
-        if (playerScore == 1)
+        if (playerScore == 2)
         {
             ppVolume.SetActive(true);
             upUI.SetActive(false);
@@ -98,28 +98,32 @@ public class GameManager : MonoBehaviour
             
 
         }
-        if (playerScore == 2)
+        else if (playerScore == 3)
         {
             smallPP.SetActive(true);
             mirroredSPP.SetActive(true);
             playerP.SetActive(false);
-            ballScript.speed = 400.0f;
+            
         }
-        if (playerScore == 3)
+        else if (playerScore == 4)
         {
+            ballScript.speed = 300.0f;
             smallPP.SetActive(false);
             mirroredSPP.SetActive(false);
             computerP.SetActive(false);
             NeonCP.SetActive(true);
-            NeonPP.SetActive(true);
-            
-            
+            NeonPP.SetActive(true); 
         }
+        else if (playerScore == 5)
+        {
+
+        }
+
     }
 
     public void TimedAudioEvents()
     {
-        if (playerScore == 0)
+        if (playerScore == 1)
         {
             BgMusicStageOne.Play();
         }
