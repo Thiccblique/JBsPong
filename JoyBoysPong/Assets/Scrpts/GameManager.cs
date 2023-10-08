@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public Paddle computerPaddle;
     private int playerScore;
     private int computerScore;
+    public AudioSource playerPlusOne;
+    public AudioSource computerPlusOne;
 
     public TMPro.TMP_Text playerScoreText;
     public TMPro.TMP_Text computerScoreText;
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(playerScore);
         playerScoreText.text = playerScore.ToString();
         ResetRound();
+        playerPlusOne.Play();
 
 
     }
@@ -41,6 +44,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(computerScore);
         computerScoreText.text = computerScore.ToString();
         ResetRound();
+        computerPlusOne.Play();
     }
 
     private void ResetRound()
@@ -50,5 +54,7 @@ public class GameManager : MonoBehaviour
         ball.ResetPosition();
         ball.StartingForce();
     }
+
+
     
 }
