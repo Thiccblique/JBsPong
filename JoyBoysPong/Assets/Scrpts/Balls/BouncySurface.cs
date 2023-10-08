@@ -7,7 +7,6 @@ public class BouncySurface : MonoBehaviour
     public float bounceStrength;
     public AudioSource pongBounce;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +26,7 @@ public class BouncySurface : MonoBehaviour
             Vector2 normal = collision.GetContact(0).normal;
             ball.AddForce(-normal * bounceStrength);
             pongBounce.Play();
+           
         }
     }
 }
