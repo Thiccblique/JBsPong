@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Scripts")]
+    public BallScript ballScript;
+    
     [Header("Other Objects")]
-    public Ball ball;
-    public Ball blBall;
+    public BallScript ball;
+    public BallScript blBall;
     public Paddle playerPaddle;
     public Paddle computerPaddle;
+
     [Header("Score")]
     private int playerScore;
     private int computerScore;
@@ -99,14 +103,17 @@ public class GameManager : MonoBehaviour
             smallPP.SetActive(true);
             mirroredSPP.SetActive(true);
             playerP.SetActive(false);
+            ballScript.speed = 400.0f;
         }
-        if (playerScore == 4)
+        if (playerScore == 3)
         {
             smallPP.SetActive(false);
             mirroredSPP.SetActive(false);
             computerP.SetActive(false);
             NeonCP.SetActive(true);
             NeonPP.SetActive(true);
+            
+            
         }
     }
 

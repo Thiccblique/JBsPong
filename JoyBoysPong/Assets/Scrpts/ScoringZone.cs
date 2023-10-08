@@ -20,7 +20,7 @@ public class ScoringZone : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Ball ball = collision.gameObject.GetComponent<Ball>();
+        BallScript ball = collision.gameObject.GetComponent<BallScript>();
         if (ball != null)
         {
             BaseEventData eventData = new BaseEventData(EventSystem.current);

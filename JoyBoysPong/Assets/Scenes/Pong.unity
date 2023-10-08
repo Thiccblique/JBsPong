@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4d982f86ab375468ac2ced96bcdea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 13
+  speed: 15
   rb: {fileID: 137936989}
   ball: {fileID: 984921432}
   bBall: {fileID: 803055470}
@@ -3032,6 +3032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac1ed55c25cc554ba94779bb9a7bb49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballScript: {fileID: 803055468}
   ball: {fileID: 984921430}
   blBall: {fileID: 803055468}
   playerPaddle: {fileID: 1254425539}
