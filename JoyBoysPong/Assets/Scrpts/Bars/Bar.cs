@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Paddle : MonoBehaviour
+public class Bar : MonoBehaviour
 {
- 
     public float speed = 10.0f;
     public Rigidbody2D rb;
-   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +16,13 @@ public class Paddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-    }
-   
-   
-    public void ResetPosition()
-    {
-        rb.position = new Vector2(rb.position.x, 0.0f);
-        rb.velocity = Vector2.zero;
+
     }
 
+
+    public void ResetPosition()
+    {
+        rb.position = new Vector2(0.0f, rb.position.y);
+        rb.velocity = Vector2.zero;
+    }
 }

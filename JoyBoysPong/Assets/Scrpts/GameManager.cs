@@ -7,12 +7,12 @@ public class GameManager : MonoBehaviour
 {
     [Header("Scripts")]
     public BallScript ballScript;
-    
-    [Header("Other Objects")]
     public BallScript ball;
     public BallScript blBall;
     public Paddle playerPaddle;
     public Paddle computerPaddle;
+    public Bar playerBar;
+    public Bar computerBar;
 
     [Header("Score")]
     private int playerScore;
@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     public GameObject NeonCP;
     public GameObject balls;
     public GameObject bBall;
+    public GameObject pong;
+    public GameObject breakout;
     
 
     
@@ -80,6 +82,8 @@ public class GameManager : MonoBehaviour
     {
         playerPaddle.ResetPosition();
         computerPaddle.ResetPosition();
+        playerBar.ResetPosition();
+        computerBar.ResetPosition();
         ball.ResetPosition();
         ball.StartingForce();
         blBall.ResetPosition();
@@ -116,7 +120,13 @@ public class GameManager : MonoBehaviour
         }
         else if (playerScore == 5)
         {
-
+            balls.SetActive(true);
+        } 
+        else if (playerScore == 8)
+        {
+            pong.SetActive(false);
+            breakout.SetActive(true);
+            balls.SetActive(false);
         }
 
     }
