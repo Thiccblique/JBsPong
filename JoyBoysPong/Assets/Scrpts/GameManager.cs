@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public TMPro.TMP_Text computerScoreText;
     public TMPro.TMP_Text breakPlayerScoreText;
     public TMPro.TMP_Text breakComputerScoreText;
-
+    
     [Header("Togolable")]
     public GameObject ppVolume;
     public GameObject upUI;
@@ -63,6 +63,12 @@ public class GameManager : MonoBehaviour
     public GameObject advBar;
     public GameObject pBar;
     public GameObject spaceUI;
+    public GameObject talkBackText;
+    public GameObject betterWalls;
+    public GameObject pongWalls;
+    public GameObject breakoutWalls;
+
+
 
 
 
@@ -79,13 +85,14 @@ public class GameManager : MonoBehaviour
         TimedVisualEvents();
         TimedAudioEvents();
         BlockCounter();
+        //Invoke("DestroyObject", delayTime); 
         RestartCurrentScene();
     }
 
     public void RestartCurrentScene()
     {
         
-        if (computerScore >= 20)
+        if (computerScore >= 30)
         {
             Scene currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(currentScene.name);
@@ -93,27 +100,6 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void PlayerScore()
-    {
-        playerScore++;
-        Debug.Log(playerScore);
-        playerScoreText.text = playerScore.ToString();
-        breakPlayerScoreText.text = playerScore.ToString();
-        ResetRound();
-        playerPlusOne.Play();
-
-
-    }
-
-    public void ComputerScore()
-    {
-        computerScore++;
-        Debug.Log(computerScore);
-        computerScoreText.text = computerScore.ToString();
-        breakComputerScoreText.text = computerScore.ToString();
-        ResetRound();
-        computerPlusOne.Play();
-    }
 
     private void ResetRound()
     {
@@ -142,6 +128,7 @@ public class GameManager : MonoBehaviour
             downUI.SetActive(false); 
             traingball.SetActive(false);
             bBall.SetActive(true);
+            talkBackText.SetActive(true);
             
 
         }
@@ -150,6 +137,7 @@ public class GameManager : MonoBehaviour
             smallPP.SetActive(true);
             mirroredSPP.SetActive(true);
             playerP.SetActive(false);
+            talkBackText.SetActive(false);
             
         }
         else if (playerScore == 4)
@@ -159,10 +147,12 @@ public class GameManager : MonoBehaviour
             mirroredSPP.SetActive(false);
             computerP.SetActive(false);
             NeonCP.SetActive(true);
-            NeonPP.SetActive(true); 
+            NeonPP.SetActive(true);
+            traingball.SetActive(true);
         }
         else if (playerScore == 5)
         {
+            traingball.SetActive(true);
             traingball.SetActive(true);
         } 
         else if (playerScore == 8)
@@ -170,6 +160,7 @@ public class GameManager : MonoBehaviour
             pong.SetActive(false);
             breakout.SetActive(true);
             traingball.SetActive(false);
+            bgUI.SetActive(true);
         }
         else if (playerScore == 9)
         {
@@ -198,10 +189,15 @@ public class GameManager : MonoBehaviour
             spaceUI.SetActive(true);
           
         }
-        else if (playerScore == 18)
+        else if (playerScore == 19)
         {
             pong.SetActive(true);
             computerPaddle.speed = 17;
+            spaceUI.SetActive(false);
+            betterWalls.SetActive(true);
+            pongWalls.SetActive(false);
+            breakoutWalls.SetActive(false);
+            
             
         }
 
@@ -219,6 +215,29 @@ public class GameManager : MonoBehaviour
             BgMusicStageTwo.Play();
 
         }
+    }
+
+
+    public void PlayerScore()
+    {
+        playerScore++;
+        Debug.Log(playerScore);
+        playerScoreText.text = playerScore.ToString();
+        breakPlayerScoreText.text = playerScore.ToString();
+        ResetRound();
+        playerPlusOne.Play();
+
+
+    }
+
+    public void ComputerScore()
+    {
+        computerScore++;
+        Debug.Log(computerScore);
+        computerScoreText.text = computerScore.ToString();
+        breakComputerScoreText.text = computerScore.ToString();
+        ResetRound();
+        computerPlusOne.Play();
     }
 
     public void BlockCounter()

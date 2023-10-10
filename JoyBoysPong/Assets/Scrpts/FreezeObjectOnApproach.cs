@@ -27,18 +27,7 @@ public class FreezeObjectOnApproach : MonoBehaviour
     void Update()
     {
         // Calculate the distance between the object and the player
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-        // Check if the object is near the player and not frozen
-        if (distanceToPlayer <= freezeDistance && !isFrozen)
-        {
-            // Freeze the object's movement
-            isFrozen = true;
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            Ball.transform.SetParent(playerBar);
-            Ball.GetComponent<Rigidbody2D>().isKinematic = true;
-            Ball.transform.position = playerBar.transform.position;
-        }
+       
 
         // Check if the player presses the space key and the object is frozen
         if (isFrozen && Input.GetKeyDown(KeyCode.Space))
@@ -54,4 +43,18 @@ public class FreezeObjectOnApproach : MonoBehaviour
 
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !isFrozen)
+        {
+            isFrozen = true;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            Ball.transform.SetParent(playerBar);
+            Ball.GetComponent<Rigidbody2D>().isKinematic = true;
+            Ball.transform.position = playerBar.transform.position;
+            
+        }
+    }
+
 }
