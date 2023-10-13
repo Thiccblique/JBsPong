@@ -207,12 +207,19 @@ public class GameManager : MonoBehaviour
     {
         if (playerScore == 1)
         {
+            
             BgMusicStageOne.Play();
         }
         if (playerScore == 8)
         {
-            BgMusicStageOne.Stop();
-            BgMusicStageTwo.Play();
+            if (!hasBeenCalled)
+            {
+                BgMusicStageOne.Stop();
+                BgMusicStageTwo.Play();
+
+                hasBeenCalled = true;
+            }    
+          
 
         }
     }
